@@ -34,18 +34,13 @@ module.exports = function(extraLocals)
 function isRoute(url, app)
 {
     let routes = getRoutes(app);
-    return routes.length === 0 ? false : routes.every(route => {
-        let res = pathToRegExp(route.path).test(url);
-        console.log(res, route.path, url);
-        return res;
-    });
+    return routes.length === 0 ? false : routes.every(route => pathToRegExp(route.path).test(url));
 }
 
 function getPossibleViewName(viewPath, url)
 {
     if (url.indexOf('/partials') !== -1) return;
     let filename = path.join(viewPath, url);
-    console.log(filename);
     let status = getFileStatus(filename);
     if (status === 'file' && path.extname(url) === '.pug') {
         return removeRoot(removeExtention(url));
