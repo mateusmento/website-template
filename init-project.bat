@@ -10,3 +10,4 @@ mkdir "web/scripts"
 mkdir "web/stylesheets"
 mkdir "web/stylesheets/partials"
 mkdir "web/views/partials"
+npm install
